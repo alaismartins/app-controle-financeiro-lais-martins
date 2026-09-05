@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Instalar o app — Controle Financeiro</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='10' fill='%23FAF6F3'/><path d='M20 8C28 12 32 20 20 32C8 20 12 12 20 8Z' fill='%23B8697A'/><circle cx='25' cy='13' r='2.6' fill='%23B08B4F'/></svg>" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#FAF6F3" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #2E2430;
+    background: #FAF6F3;
+    min-height: 100vh;
+  }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  a { color: inherit; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 64px; }
+  .header { display: flex; align-items: center; gap: 12px; margin-bottom: 34px; }
+  .title { font-size: 17px; font-weight: 600; line-height: 1.1; }
+  .subtitle { font-size: 12px; color: #8B7D82; letter-spacing: 0.02em; }
+  h1 { font-size: 26px; margin: 0 0 8px; }
+  .lead { color: #6E6068; font-size: 15px; line-height: 1.55; margin: 0 0 32px; max-width: 56ch; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid #E8DED8; }
+  .tab {
+    appearance: none; border: none; background: transparent; cursor: pointer;
+    font-family: inherit; font-size: 14.5px; font-weight: 500; color: #8B7D82;
+    padding: 10px 4px 12px; border-bottom: 2px solid transparent; transition: color .15s ease;
+  }
+  .tab.active { color: #2E2430; border-bottom-color: #B8697A; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade .4s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  ol.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  ol.steps li {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: #FFFFFF; border: 1px solid #E8DED8; border-radius: 12px; padding: 14px 16px;
+  }
+  .num {
+    flex: none; width: 26px; height: 26px; border-radius: 999px;
+    background: #F3E3E6; color: #B8697A; font-weight: 600; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-text { font-size: 14.5px; line-height: 1.5; padding-top: 3px; }
+  .note {
+    margin-top: 28px; font-size: 13px; color: #8B7D82; line-height: 1.6;
+    background: #F3ECDD; border: 1px solid #EADFC4; border-radius: 12px; padding: 14px 16px;
+  }
+  .note strong { color: #2E2430; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 32px;
+    background: #B8697A; color: #fff; text-decoration: none; font-weight: 500;
+    font-size: 14.5px; padding: 12px 20px; border-radius: 10px; transition: opacity .15s ease;
+  }
+  .cta:hover { opacity: .88; }
+  .fallback-note { font-size: 12.5px; color: #8B7D82; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="18" stroke="#E8DED8" stroke-width="1.4" />
+      <path d="M20 8C28 12 32 20 20 32C8 20 12 12 20 8Z" fill="#B8697A" />
+      <circle cx="25" cy="13" r="2.4" fill="#B08B4F" />
+    </svg>
+    <div>
+      <div class="serif title">Controle Financeiro</div>
+      <div class="subtitle">Laís Martins</div>
+    </div>
+  </div>
+
+  <h1 class="serif">Instale o app no seu celular</h1>
+  <p class="lead">
+    Instalando, o app ganha ícone próprio na tela inicial, abre em tela cheia (sem barra do
+    navegador) e continua funcionando offline. Os dados continuam salvos só neste aparelho —
+    use a opção de exportar/importar dentro do app para levar as informações para outro celular.
+  </p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" id="tab-android" onclick="showPanel('android')">Android / Chrome</button>
+    <button class="tab" id="tab-ios" onclick="showPanel('ios')">iPhone / Safari</button>
+  </div>
+
+  <div class="panel active" id="panel-android">
+    <ol class="steps">
+      <li><span class="num">1</span><span class="step-text">Abra este site no navegador <strong>Chrome</strong> do seu Android.</span></li>
+      <li><span class="num">2</span><span class="step-text">Toque no menu com três pontinhos, no canto superior direito da tela.</span></li>
+      <li><span class="num">3</span><span class="step-text">Toque em <strong>"Instalar app"</strong> (ou <strong>"Adicionar à tela inicial"</strong>, dependendo da versão do Chrome).</span></li>
+      <li><span class="num">4</span><span class="step-text">Confirme tocando em <strong>"Instalar"</strong>.</span></li>
+      <li><span class="num">5</span><span class="step-text">Pronto! O ícone do app aparece na tela inicial, como qualquer outro aplicativo.</span></li>
+    </ol>
+    <p class="fallback-note">Em alguns celulares o Chrome já mostra um banner ou o ícone de instalação direto na barra de endereço — se aparecer, pode tocar nele.</p>
+  </div>
+
+  <div class="panel" id="panel-ios">
+    <ol class="steps">
+      <li><span class="num">1</span><span class="step-text">Abra este site no <strong>Safari</strong> (a instalação só funciona pelo Safari, não pelo Chrome do iPhone).</span></li>
+      <li><span class="num">2</span><span class="step-text">Toque no ícone de compartilhamento — o quadrado com uma seta para cima — na barra inferior da tela.</span></li>
+      <li><span class="num">3</span><span class="step-text">Role a lista de opções para baixo e toque em <strong>"Adicionar à Tela de Início"</strong>.</span></li>
+      <li><span class="num">4</span><span class="step-text">Toque em <strong>"Adicionar"</strong>, no canto superior direito.</span></li>
+      <li><span class="num">5</span><span class="step-text">Pronto! O ícone do app aparece na tela inicial do seu iPhone.</span></li>
+    </ol>
+  </div>
+
+  <div class="note">
+    <strong>Sobre os dados:</strong> cada aparelho guarda suas próprias informações. Se você usar o
+    app em mais de um celular, use os botões de exportar (↓) e importar (↑) na tela principal para
+    transferir um backup em arquivo entre os dispositivos.
+  </div>
+
+  <a class="cta" href="index.html">Abrir o app →</a>
+</div>
+
+<script>
+  function showPanel(name) {
+    document.getElementById('panel-android').classList.toggle('active', name === 'android');
+    document.getElementById('panel-ios').classList.toggle('active', name === 'ios');
+    document.getElementById('tab-android').classList.toggle('active', name === 'android');
+    document.getElementById('tab-ios').classList.toggle('active', name === 'ios');
+  }
+  // Abre já na aba certa quando dá pra detectar o aparelho.
+  (function () {
+    var ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/i.test(ua)) showPanel('ios');
+  })();
+</script>
+</body>
+</html>
